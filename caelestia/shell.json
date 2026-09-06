@@ -1,0 +1,53 @@
+{
+    "appearance": {
+        "transparency": {
+            "enabled": true
+        }
+    },
+    "bar": {
+        "statusIcons": [
+            {
+                "id": "lockStatus",
+                "enabled": true
+            },
+            {
+                "id": "audio",
+                "enabled": false
+            },
+            {
+                "id": "microphone",
+                "enabled": true
+            },
+            {
+                "id": "kbLayout",
+                "enabled": false
+            },
+            {
+                "id": "network",
+                "enabled": true
+            },
+            {
+                "id": "bluetooth",
+                "enabled": true
+            },
+            {
+                "id": "battery",
+                "enabled": true
+            }
+        ]
+    },
+    "osd": {
+        "enableMicrophone": true
+    },
+    "dashboard": {
+        "mediaUpdateInterval": 300,
+        "resourceUpdateInterval": 2000
+    },
+    "general": {
+        "apps": {
+            "terminal": [
+                "kitty"
+            ]
+        }
+    }
+}

@@ -1,0 +1,90 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$shell\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$cpp\
+$lua\
+$nodejs\
+$uv\
+$golang\
+$rust\
+$cmd_duration\
+$character"""
+
+add_newline = false
+scan_timeout = 5000
+
+# Shell Indicator (Logo Fish Kotak di Kiri)
+[shell]
+fish_indicator = '󰈺 '
+zsh_indicator = '󰟪 '
+powershell_indicator = '_ '
+unknown_indicator = '_ '
+style = 'bg:#8ccf7e fg:#141b1e'
+format = '[$indicator]($style) '
+disabled = false
+
+# Directory
+[directory]
+style = 'bold cyan'
+truncation_length = 3
+truncate_to_repo = false
+format = '[$path]($style) '
+
+# Git Branch
+[git_branch]
+symbol = ' '
+style = 'bold purple'
+format = 'on [$symbol$branch]($style) '
+
+# Git Status
+[git_status]
+style = 'bold red'
+
+# Prompt Character (Simbol Chevron / Arrow)
+[character]
+success_symbol = '[»](bold cyan) '
+error_symbol = '[✗](bold red) '
+
+# Languages & Environments
+[c]
+symbol = " "
+format = 'via [$symbol($version)]($style) '
+style = 'bold blue'
+
+[cpp]
+symbol = " "
+format = 'via [$symbol($version)]($style) '
+style = 'bold blue'
+
+[lua]
+symbol = " "
+format = 'via [$symbol($version)]($style) '
+style = 'bold blue'
+
+[nodejs]
+symbol = " "
+format = 'via [$symbol($version)]($style) '
+style = 'bold green'
+
+[golang]
+symbol = "󰟓 "
+format = 'via [$symbol($version)]($style) '
+style = 'bold cyan'
+
+[rust]
+symbol = "⚙️ "
+format = 'via [$symbol($version)]($style) '
+style = 'bold red'
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration]($style) '
+style = 'bold italic magenta'
+
+[package]
+disabled = true
