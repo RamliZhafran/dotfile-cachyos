@@ -17,7 +17,7 @@ Semua file di `~/.config` adalah **symlink** ke repo ini via GNU Stow.
 
 ---
 
-## Setup di mesin baru
+## Setup di komputer
 
 ```bash
 # 1. Clone repo
