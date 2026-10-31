@@ -47,5 +47,13 @@ return {
     config = function()
       require "configs.vyfor"
     end
-  }
+  },
+
+  -- floaterm
+  {
+    "nvzone/floaterm",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = "FloatermToggle",
+  },
 }

@@ -34,7 +34,11 @@ if status is-interactive
     abbr ll 'ls -l'
     abbr la 'ls -a'
     abbr lla 'ls -la'
-    abbr linoffice '/home/artemis/.local/bin/linoffice/src/linoffice.sh'
+    abbr linoffice '/home/artemis/.local/bin/linoffice/linoffice.sh'
+    abbr winvm 'xfreerdp3 /u:MyWindowsUser /p:MyWindowsPassword /v:127.0.0.1:3388 /cert:ignore +dynamic-resolution +home-drive +clipboard'
+    abbr winweb 'xdg-open http://localhost:8006'
+    abbr winstart 'podman start LinOffice'
+    abbr winstop 'podman stop LinOffice'
 
     # Custom colours
     cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
@@ -59,6 +63,9 @@ fish_add_path /home/artemis/.opencode/bin
 # claude
 fish_add_path /home/artemis/.local/bin
 
+# rom-cli
+fish_add_path /home/artemis/bin
+
 # === 9Router for Claude Code ===
 set -gx ANTHROPIC_BASE_URL http://localhost:20128          # no /v1 suffix
 set -gx ANTHROPIC_AUTH_TOKEN sk-b22761d0e74fb741-1d7o5d-7404b60a # bearer token
@@ -66,3 +73,20 @@ set -gx ANTHROPIC_MODEL kr/auto
 set -gx CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY 1
 set -gx CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT 1
 # === End 9Router ===
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/artemis/miniconda3-pbe/bin/conda
+    eval /home/artemis/miniconda3-pbe/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/artemis/miniconda3-pbe/etc/fish/conf.d/conda.fish"
+        . "/home/artemis/miniconda3-pbe/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/artemis/miniconda3-pbe/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+

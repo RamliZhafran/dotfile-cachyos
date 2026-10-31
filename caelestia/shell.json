@@ -1,53 +1,267 @@
 {
     "appearance": {
+        "font": {
+            "body": {
+                "family": "GoogleSansFlex",
+                "large": {
+                    "italic": false,
+                    "size": 16,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 400
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 14,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 400
+                },
+                "small": {
+                    "italic": false,
+                    "size": 12,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 400
+                }
+            },
+            "clock": "Rubik",
+            "headline": {
+                "family": "GoogleSansFlex",
+                "large": {
+                    "italic": false,
+                    "size": 32,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 28,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "small": {
+                    "italic": false,
+                    "size": 24,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                }
+            },
+            "icon": {
+                "extraLarge": {
+                    "italic": false,
+                    "size": 36,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                },
+                "family": "Material Symbols Rounded",
+                "large": {
+                    "italic": false,
+                    "size": 24,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 18,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                },
+                "small": {
+                    "italic": false,
+                    "size": 15,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                }
+            },
+            "label": {
+                "family": "GoogleSansFlex",
+                "large": {
+                    "italic": false,
+                    "size": 14,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 12,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "small": {
+                    "italic": false,
+                    "size": 11,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 400
+                }
+            },
+            "mono": {
+                "family": "CaskaydiaCove NF",
+                "large": {
+                    "italic": false,
+                    "size": 16,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 14,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                },
+                "small": {
+                    "italic": false,
+                    "size": 12,
+                    "vaxes": {
+                    },
+                    "weight": 400
+                }
+            },
+            "scale": 1,
+            "title": {
+                "family": "GoogleSansFlex",
+                "large": {
+                    "italic": false,
+                    "size": 22,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "medium": {
+                    "italic": false,
+                    "size": 16,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                },
+                "small": {
+                    "italic": false,
+                    "size": 14,
+                    "vaxes": {
+                        "ROND": 25
+                    },
+                    "weight": 500
+                }
+            },
+            "workspaces": "Rubik"
+        },
         "transparency": {
             "enabled": true
         }
     },
+    "background": {
+        "wallpaperEnabled": true
+    },
     "bar": {
+        "activeWindow": {
+            "compact": false,
+            "inverted": true
+        },
+        "popouts": {
+            "activeWindow": true
+        },
         "statusIcons": [
             {
-                "id": "lockStatus",
-                "enabled": true
+                "enabled": true,
+                "id": "lockStatus"
             },
             {
-                "id": "audio",
-                "enabled": false
+                "enabled": false,
+                "id": "audio"
             },
             {
-                "id": "microphone",
-                "enabled": true
+                "enabled": true,
+                "id": "microphone"
             },
             {
-                "id": "kbLayout",
-                "enabled": false
+                "enabled": false,
+                "id": "kbLayout"
             },
             {
-                "id": "network",
-                "enabled": true
+                "enabled": true,
+                "id": "network"
             },
             {
-                "id": "bluetooth",
-                "enabled": true
+                "enabled": true,
+                "id": "bluetooth"
             },
             {
-                "id": "battery",
-                "enabled": true
+                "enabled": true,
+                "id": "battery"
             }
-        ]
-    },
-    "osd": {
-        "enableMicrophone": true
+        ],
+        "workspaces": {
+            "activeIndicator": true,
+            "activeTrail": true,
+            "maxWindowIcons": 3,
+            "occupiedBg": false,
+            "perMonitor": true,
+            "showUnoccupied": true,
+            "showWindows": false,
+            "showWindowsOnSpecialWorkspaces": true,
+            "shown": 5
+        }
     },
     "dashboard": {
+        "dragThreshold": 40,
         "mediaUpdateInterval": 300,
-        "resourceUpdateInterval": 2000
+        "resourceUpdateInterval": 2000,
+        "showClockSeconds": false,
+        "showOnHover": true,
+        "showWeather": false
     },
     "general": {
         "apps": {
             "terminal": [
                 "kitty"
             ]
+        },
+        "idle": {
+            "timeouts": [
+                {
+                    "enabled": true,
+                    "idleAction": "lock",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "timeout": 1800
+                }
+            ]
         }
+    },
+    "launcher": {
+        "useFuzzy": {
+            "wallpapers": false
+        },
+        "vimKeybinds": false
+    },
+    "osd": {
+        "enableMicrophone": true
+    },
+    "services": {
+        "weatherUnits": "Celsius"
     }
 }

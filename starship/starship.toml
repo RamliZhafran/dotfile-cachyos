@@ -9,7 +9,8 @@ $c\
 $cpp\
 $lua\
 $nodejs\
-$uv\
+${custom.uvenv}\
+${custom.uv}\
 $golang\
 $rust\
 $cmd_duration\
@@ -80,6 +81,23 @@ style = 'bold cyan'
 symbol = "⚙️ "
 format = 'via [$symbol($version)]($style) '
 style = 'bold red'
+
+# UV (Python package manager)
+[custom.uv]
+symbol = "\ue73c "
+command = "uv --version | cut -d' ' -f2"
+format = 'via [$symbol($output)]($style) '
+style = 'bold blue'
+detect_folders = ['.venv', 'venv']
+detect_extensions = ['py', 'ipynb']
+detect_files = ['.python-version', 'Pipfile', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini', 'uv.lock', 'uv.toml']
+
+# Aktif virtualenv (nama env dalam kurung)
+[custom.uvenv]
+command = 'basename "$VIRTUAL_ENV"'
+when = 'test -n "$VIRTUAL_ENV"'
+format = '[\($output\)]($style) '
+style = 'bold green'
 
 [cmd_duration]
 min_time = 500

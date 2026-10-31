@@ -1,0 +1,42 @@
+# Sensitive
+.ssh/id_*
+.ssh/known_hosts
+.ssh/authorized_keys
+*.key
+*.pem
+*.crt
+*.p12
+.secrets
+.env
+.env.local
+*.env
+
+# History
+.bash_history
+.zsh_history
+.python_history
+.node_repl_history
+.mysql_history
+.pgsql_history
+
+# Cache
+.cache/
+.config/discord
+.config/spotify
+.config/Slack
+.config/obsidian/Cache
+.config/Google/Chrome/Default/Cache
+.mozilla/firefox/*/cache2/
+.local/share/Trash/
+
+# Temporary
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Credentials
+.netrc
+.aws/credentials
+.config/gh/hosts.yml

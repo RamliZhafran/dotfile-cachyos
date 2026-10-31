@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keybind Cheatsheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg:         #0d1117;
+    --surface:    #161b22;
+    --surface2:   #1c2128;
+    --border:     #30363d;
+    --accent:     #58a6ff;
+    --accent-dim: #1f3358;
+    --text:       #e6edf3;
+    --muted:      #8b949e;
+    --key-bg:     #21262d;
+    --key-border: #484f58;
+    --search-bg:  #0d1117;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg:         #f6f8fa;
+      --surface:    #ffffff;
+      --surface2:   #f0f1f3;
+      --border:     #d0d7de;
+      --accent:     #0969da;
+      --accent-dim: #dbeafe;
+      --text:       #1f2328;
+      --muted:      #636c76;
+      --key-bg:     #eaeef2;
+      --key-border: #b7bdc3;
+      --search-bg:  #ffffff;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:         #f6f8fa;
+    --surface:    #ffffff;
+    --surface2:   #f0f1f3;
+    --border:     #d0d7de;
+    --accent:     #0969da;
+    --accent-dim: #dbeafe;
+    --text:       #1f2328;
+    --muted:      #636c76;
+    --key-bg:     #eaeef2;
+    --key-border: #b7bdc3;
+    --search-bg:  #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 28px 24px 48px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto 24px;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .logo span {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 360px;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    background: var(--search-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    padding: 8px 12px 8px 34px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  #search:focus {
+    border-color: var(--accent);
+  }
+
+  #search::placeholder {
+    color: var(--muted);
+  }
+
+  .theme-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .theme-btn:hover { color: var(--text); border-color: var(--accent); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 10px 14px 9px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+  }
+
+  .card-icon {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  .card-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr { border-bottom: 1px solid var(--border); }
+  tr:last-child { border-bottom: none; }
+
+  tr.hidden { display: none; }
+
+  td {
+    padding: 7px 14px;
+    vertical-align: middle;
+  }
+
+  td:first-child {
+    color: var(--text);
+    font-size: 13px;
+    width: 46%;
+  }
+
+  td:last-child {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .keys {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  kbd {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--key-bg);
+    border: 1px solid var(--key-border);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: var(--text);
+    white-space: nowrap;
+    box-shadow: 0 1px 0 var(--key-border);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sep {
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 0 1px;
+  }
+
+  .multi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--muted);
+    font-size: 13px;
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .no-results.show { display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <h1>Keybind Reference</h1>
+    <span>Caelestia · Hyprland</span>
+  </div>
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="6.5" cy="6.5" r="5"/><path d="M10.5 10.5L14 14"/>
+    </svg>
+    <input id="search" type="search" placeholder="Cari keybind…" autocomplete="off" spellcheck="false">
+  </div>
+  <button class="theme-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+    <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+    <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+</header>
+
+<div class="grid" id="grid">
+
+  <div class="card" data-section="workspace">
+    <div class="card-header">
+      <span class="card-icon">⬜</span>
+      <span class="card-title">Workspace</span>
+    </div>
+    <table>
+      <tr><td>Ke workspace 1–10</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>0–9</kbd></div></td></tr>
+      <tr><td>Ke workspace group 1–10</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>0–9</kbd></div></td></tr>
+      <tr><td>Workspace berikutnya</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>Page↓</kbd></div>
+        <div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>→</kbd></div>
+      </div></td></tr>
+      <tr><td>Workspace sebelumnya</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>Page↑</kbd></div>
+        <div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>←</kbd></div>
+      </div></td></tr>
+      <tr><td>Group ws berikutnya</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>scroll↓</kbd></div></td></tr>
+      <tr><td>Group ws sebelumnya</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>scroll↑</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="pindah-window">
+    <div class="card-header">
+      <span class="card-icon">➡️</span>
+      <span class="card-title">Pindah Window ke Workspace</span>
+    </div>
+    <table>
+      <tr><td>Ke workspace 1–10</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>0–9</kbd></div></td></tr>
+      <tr><td>Ke workspace group 1–10</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>0–9</kbd></div></td></tr>
+      <tr><td>Ke workspace berikutnya</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Page↓</kbd></div>
+        <div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>→</kbd></div>
+      </div></td></tr>
+      <tr><td>Ke workspace sebelumnya</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Page↑</kbd></div>
+        <div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>←</kbd></div>
+      </div></td></tr>
+      <tr><td>Kirim ke special ws</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>S</kbd></div>
+        <div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>↑</kbd></div>
+      </div></td></tr>
+      <tr><td>Kembalikan dari special ws</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>↓</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="special">
+    <div class="card-header">
+      <span class="card-icon">★</span>
+      <span class="card-title">Special Workspaces</span>
+    </div>
+    <table>
+      <tr><td>Special (umum / "minimize")</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>S</kbd></div></td></tr>
+      <tr><td>System monitor</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>Esc</kbd></div></td></tr>
+      <tr><td>Music</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>M</kbd></div></td></tr>
+      <tr><td>Communication</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>D</kbd></div></td></tr>
+      <tr><td>Todo</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="window-nav">
+    <div class="card-header">
+      <span class="card-icon">🗔</span>
+      <span class="card-title">Window — Navigasi</span>
+    </div>
+    <table>
+      <tr><td>Fokus ←↑→↓</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>Arrow</kbd></div></td></tr>
+      <tr><td>Cycle window berikutnya</td><td><div class="keys"><kbd>ALT</kbd><span class="sep">+</span><kbd>Tab</kbd></div></td></tr>
+      <tr><td>Cycle window sebelumnya</td><td><div class="keys"><kbd>SHIFT</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Tab</kbd></div></td></tr>
+      <tr><td>Cycle dalam group →</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Tab</kbd></div></td></tr>
+      <tr><td>Cycle dalam group ←</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Tab</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="window-aksi">
+    <div class="card-header">
+      <span class="card-icon">⚙</span>
+      <span class="card-title">Window — Aksi</span>
+    </div>
+    <table>
+      <tr><td>Tutup window</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>Q</kbd></div></td></tr>
+      <tr><td>Fullscreen</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>F</kbd></div></td></tr>
+      <tr><td>Fullscreen (berborder)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>F</kbd></div></td></tr>
+      <tr><td>Float / unfloat</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Space</kbd></div></td></tr>
+      <tr><td>Pin (semua workspace)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>P</kbd></div></td></tr>
+      <tr><td>PiP (float + pin pojok)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>\</kbd></div></td></tr>
+      <tr><td>Center window</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>\</kbd></div></td></tr>
+      <tr><td>Normalize + center</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>\</kbd></div></td></tr>
+      <tr><td>Pindah window ←↑→↓</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>Arrow</kbd></div></td></tr>
+      <tr><td>Drag window (mouse)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>Z</kbd><span class="sep">+</span><kbd>drag</kbd></div></td></tr>
+      <tr><td>Resize window (mouse)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>X</kbd><span class="sep">+</span><kbd>drag</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="window-resize">
+    <div class="card-header">
+      <span class="card-icon">⤢</span>
+      <span class="card-title">Window — Resize</span>
+    </div>
+    <table>
+      <tr><td>Perkecil lebar</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>-</kbd></div>
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>←</kbd></div>
+      </div></td></tr>
+      <tr><td>Perbesar lebar</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>=</kbd></div>
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>→</kbd></div>
+      </div></td></tr>
+      <tr><td>Perkecil tinggi</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>-</kbd></div>
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>↑</kbd></div>
+      </div></td></tr>
+      <tr><td>Perbesar tinggi</td><td><div class="multi">
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>=</kbd></div>
+        <div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>↓</kbd></div>
+      </div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="window-group">
+    <div class="card-header">
+      <span class="card-icon">⊞</span>
+      <span class="card-title">Window Group</span>
+    </div>
+    <table>
+      <tr><td>Toggle group</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>,</kbd></div></td></tr>
+      <tr><td>Lock group aktif</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>,</kbd></div></td></tr>
+      <tr><td>Keluarkan dari group</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>U</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="apps">
+    <div class="card-header">
+      <span class="card-icon">▶</span>
+      <span class="card-title">Aplikasi</span>
+    </div>
+    <table>
+      <tr><td>Launcher</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">(tap)</span></div></td></tr>
+      <tr><td>Terminal (foot)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>T</kbd></div></td></tr>
+      <tr><td>Browser (firefox)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>W</kbd></div></td></tr>
+      <tr><td>Editor (codium)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>C</kbd></div></td></tr>
+      <tr><td>File explorer (thunar)</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>E</kbd></div></td></tr>
+      <tr><td>Audio settings</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>V</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="util">
+    <div class="card-header">
+      <span class="card-icon">🛠</span>
+      <span class="card-title">Utilitas</span>
+    </div>
+    <table>
+      <tr><td>Screenshot</td><td><div class="keys"><kbd>Print</kbd></div></td></tr>
+      <tr><td>Screenshot freeze</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>S</kbd></div></td></tr>
+      <tr><td>Screenshot region</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>S</kbd></div></td></tr>
+      <tr><td>Record screen</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+      <tr><td>Record + suara</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+      <tr><td>Record region</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+      <tr><td>Color picker</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>C</kbd></div></td></tr>
+      <tr><td>Ganti wallpaper</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>W</kbd></div></td></tr>
+      <tr><td>Clipboard</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>V</kbd></div></td></tr>
+      <tr><td>Clipboard delete</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>V</kbd></div></td></tr>
+      <tr><td>Paste clipboard terbaru</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>V</kbd></div></td></tr>
+      <tr><td>Emoji picker</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>.</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="media">
+    <div class="card-header">
+      <span class="card-icon">♪</span>
+      <span class="card-title">Media &amp; Volume</span>
+    </div>
+    <table>
+      <tr><td>Play / Pause</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>Space</kbd></div></td></tr>
+      <tr><td>Next track</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>=</kbd></div></td></tr>
+      <tr><td>Prev track</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>-</kbd></div></td></tr>
+      <tr><td>Stop</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>BkSp</kbd></div></td></tr>
+      <tr><td>Mute audio</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>M</kbd></div></td></tr>
+      <tr><td>Volume ↑↓</td><td><div class="keys"><kbd>XF86Vol↑↓</kbd></div></td></tr>
+      <tr><td>Mute mic</td><td><div class="keys"><kbd>XF86MicMute</kbd></div></td></tr>
+      <tr><td>Brightness ↑↓</td><td><div class="keys"><kbd>XF86Bright↑↓</kbd></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card" data-section="sistem">
+    <div class="card-header">
+      <span class="card-icon">⚡</span>
+      <span class="card-title">Sistem</span>
+    </div>
+    <table>
+      <tr><td>Lock screen</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>L</kbd></div></td></tr>
+      <tr><td>Restore lock</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>L</kbd></div></td></tr>
+      <tr><td>Sleep</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>L</kbd></div></td></tr>
+      <tr><td>Session menu</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>Del</kbd></div></td></tr>
+      <tr><td>Sidebar</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>N</kbd></div></td></tr>
+      <tr><td>Show semua panel</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>K</kbd></div></td></tr>
+      <tr><td>Clear notifikasi</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>C</kbd></div></td></tr>
+      <tr><td>Restart shell</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>ALT</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+      <tr><td>Kill shell</td><td><div class="keys"><kbd>CTRL</kbd><span class="sep">+</span><kbd>SUPER</kbd><span class="sep">+</span><kbd>SHIFT</kbd><span class="sep">+</span><kbd>R</kbd></div></td></tr>
+      <tr><td>Cheatsheet ini</td><td><div class="keys"><kbd>SUPER</kbd><span class="sep">+</span><kbd>/</kbd></div></td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="no-results" id="noResults">Tidak ada keybind yang cocok.</div>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const sun = document.getElementById('iconSun');
+  const moon = document.getElementById('iconMoon');
+
+  function getTheme() {
+    return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+
+  function applyTheme(t) {
+    root.dataset.theme = t;
+    sun.style.display  = t === 'dark'  ? 'block' : 'none';
+    moon.style.display = t === 'light' ? 'block' : 'none';
+  }
+
+  applyTheme(getTheme());
+
+  btn.addEventListener('click', () => {
+    applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+  });
+
+  // Search
+  const input = document.getElementById('search');
+  const noResults = document.getElementById('noResults');
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let visibleCards = 0;
+
+    document.querySelectorAll('.card').forEach(card => {
+      const rows = card.querySelectorAll('tr');
+      let visibleRows = 0;
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          row.classList.remove('hidden');
+          visibleRows++;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+
+      if (visibleRows === 0 && q) {
+        card.style.display = 'none';
+      } else {
+        card.style.display = '';
+        visibleCards++;
+      }
+    });
+
+    noResults.classList.toggle('show', visibleCards === 0 && q.length > 0);
+  });
+</script>
+</body>
+</html>

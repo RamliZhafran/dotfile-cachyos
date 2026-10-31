@@ -9,5 +9,12 @@ map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
--- restart cord.nvim (Discord presence)
-map("n", "ZR", "<cmd>CordReconnect<cr>", { desc = "Restart Discord presence" })
+
+
+-- float term
+map("n", "<C-t>", ":FloatermToggle<CR>", { silent = true })
+
+-- nav floaterm (mode normal & terminal)
+map({ "n", "t" }, "<C-p>", function()
+  require("floaterm.api").cycle_term_bufs "prev"
+end, { desc = "Floaterm previous buffer" })
