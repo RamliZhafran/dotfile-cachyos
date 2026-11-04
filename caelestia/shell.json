@@ -242,7 +242,7 @@
         "idle": {
             "timeouts": [
                 {
-                    "enabled": true,
+                    "enabled": false,
                     "idleAction": "lock",
                     "inhibitWhenAudio": false,
                     "inhibitWhenCharging": false,
@@ -254,7 +254,7 @@
     },
     "launcher": {
         "useFuzzy": {
-            "wallpapers": false
+            "wallpapers": true
         },
         "vimKeybinds": false
     },
